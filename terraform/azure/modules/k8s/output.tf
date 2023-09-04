@@ -3,9 +3,3 @@ output "appConfig_ConnectionString" {
   description = "The connection string to the app configuration."
   sensitive = true
 }
-
-output "kubernetes_info" {
-  value = azurerm_kubernetes_cluster.mainapp.kube_config.0
-  description = "The kubernetes configuration block."
-  sensitive = true
-}
