@@ -5,7 +5,7 @@ resource "random_password" "password" {
 }
 
 resource "azurerm_mssql_server" "main" {
-  name                         = "if-${var.environmentName}-sql"
+  name                         = "if-${var.clientName}-sql"
   resource_group_name          = data.azurerm_resource_group.main.name
   location                     = data.azurerm_resource_group.main.location
   version                      = "12.0"
