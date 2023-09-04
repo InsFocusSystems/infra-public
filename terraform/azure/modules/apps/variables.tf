@@ -8,7 +8,6 @@ variable "environmentName" {
   type        = string
 }
 
-variable "clientName" {
-  description = "The name of the client."
+variable "appConfig_ConnectionString" {
   type        = string
 }

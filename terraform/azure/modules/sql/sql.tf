@@ -5,12 +5,18 @@ resource "random_password" "password" {
 }
 
 resource "azurerm_mssql_server" "main" {
-  name                         = "if-${var.environmentName}-sql"
+  name                         = "if-${var.clientName}-sql"
   resource_group_name          = data.azurerm_resource_group.main.name
   location                     = data.azurerm_resource_group.main.location
   version                      = "12.0"
   administrator_login          = "insfocus"
   administrator_login_password = random_password.password.result
+
+  tags = {
+    if_client_name = var.clientName
+    if_environment = var.environmentName
+    created_by = "InsFocus / Terraform"
+  }
 }
 
 resource "azurerm_mssql_database" "appdef" {
@@ -25,6 +31,12 @@ resource "azurerm_mssql_database" "appdef" {
   read_scale                  = false
   sku_name                    = "GP_S_Gen5_1"
   zone_redundant              = false
+
+  tags = {
+    if_client_name = var.clientName
+    if_environment = var.environmentName
+    created_by = "InsFocus / Terraform"
+  }
 }
 
 resource "azurerm_mssql_database" "qbdef" {
@@ -39,6 +51,12 @@ resource "azurerm_mssql_database" "qbdef" {
   read_scale                  = false
   sku_name                    = "GP_S_Gen5_1"
   zone_redundant              = false
+
+  tags = {
+    if_client_name = var.clientName
+    if_environment = var.environmentName
+    created_by = "InsFocus / Terraform"
+  }
 }
 
 resource "azurerm_mssql_database" "log" {
@@ -53,4 +71,10 @@ resource "azurerm_mssql_database" "log" {
   read_scale                  = false
   sku_name                    = "GP_S_Gen5_1"
   zone_redundant              = false
+
+  tags = {
+    if_client_name = var.clientName
+    if_environment = var.environmentName
+    created_by = "InsFocus / Terraform"
+  }
 }
