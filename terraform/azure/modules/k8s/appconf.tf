@@ -15,12 +15,6 @@ resource "azurerm_role_assignment" "appconf_dataowner" {
   scope                = azurerm_app_configuration.appconf.id
   role_definition_name = "App Configuration Data Owner"
   principal_id         = data.azurerm_client_config.current.object_id
-
-  tags = {
-    if_client_name = var.clientName
-    if_environment = var.environmentName
-    created_by = "InsFocus / Terraform"
-  }
 }
 
 resource "azurerm_app_configuration_key" "configuration" {
@@ -72,10 +66,4 @@ EOT
   depends_on = [
     azurerm_role_assignment.appconf_dataowner
   ]
-
-  tags = {
-    if_client_name = var.clientName
-    if_environment = var.environmentName
-    created_by = "InsFocus / Terraform"
-  }
 }
