@@ -3,8 +3,8 @@ variable "resourceGroup" {
   type        = string
 }
 
-variable "environmentName" {
-  description = "The name of the environment."
+variable "clientName" {
+  description = "The name of the client."
   type        = string
 }
 
