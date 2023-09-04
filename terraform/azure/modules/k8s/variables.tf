@@ -1,4 +1,3 @@
-
 variable "environmentName" {
   description = "The name of the environment."
   type        = string
