@@ -9,6 +9,17 @@ resource "azurerm_kubernetes_cluster" "mainapp" {
     node_count = 1
     vm_size    = "Standard_DS2_v2"
     vnet_subnet_id = var.vnet_subnet_id
+
+    tags = {
+      if_client_name = var.clientName
+      if_environment = var.environmentName
+      created_by = "InsFocus / Terraform"
+    }
+  }
+
+  network_profile {
+    network_plugin = "azure"
+    load_balancer_sku = "standard"
   }
 
   identity {
