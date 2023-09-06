@@ -20,6 +20,8 @@ resource "azurerm_kubernetes_cluster" "mainapp" {
   network_profile {
     network_plugin = "azure"
     load_balancer_sku = "standard"
+    service_cidr = "10.0.16.0/20"
+    dns_service_ip = "10.0.16.10"
   }
 
   identity {
