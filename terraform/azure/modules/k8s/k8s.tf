@@ -128,4 +128,14 @@ resource "helm_release" "nginx_ingress" {
     value = "Local"
     type  = "string"
   }
+
+  set {
+    name  = "controller.service.annotations.service\\.beta\\.kubernetes\\.io/azure-load-balancer-resource-group"
+    value = "your-resource-group"
+  }
+
+  set {
+    name  = "controller.service.loadBalancerIP"
+    value = var.public_ip_address
+  }
 }

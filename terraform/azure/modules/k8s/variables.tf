@@ -45,3 +45,7 @@ variable "vnet_subnet_id" {
   description = "The ID of the subnet to use for the AKS cluster"
   type        = string 
 }
+
+variable "public_ip_address" {
+  description = "The public IP address to use for the AKS cluster"
+}
